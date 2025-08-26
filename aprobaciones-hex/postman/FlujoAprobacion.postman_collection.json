@@ -1,0 +1,115 @@
+{
+  "info": {
+    "name": "FlujoAprobacion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/api/health"
+      }
+    },
+    {
+      "name": "Users",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/api/users"
+      }
+    },
+    {
+      "name": "Types",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/api/types"
+      }
+    },
+    {
+      "name": "Create Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"Deploy v2\", \"description\": \"Subir v2\", \"requester\": \"juan\", \"approver\": \"ana\", \"typeId\": 1}"
+        },
+        "url": "http://localhost:4000/api/requests"
+      }
+    },
+    {
+      "name": "List by approver",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/api/requests?approver=ana"
+      }
+    },
+    {
+      "name": "List by requester",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/api/requests?requester=juan"
+      }
+    },
+    {
+      "name": "Get request",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/api/requests/00000000-0000-0000-0000-000000000001"
+      }
+    },
+    {
+      "name": "Approve",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"user\": \"ana\", \"comment\": \"ok\"}"
+        },
+        "url": "http://localhost:4000/api/requests/00000000-0000-0000-0000-000000000001/approve"
+      }
+    },
+    {
+      "name": "Reject",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"user\": \"ana\", \"comment\": \"no\"}"
+        },
+        "url": "http://localhost:4000/api/requests/00000000-0000-0000-0000-000000000001/reject"
+      }
+    },
+    {
+      "name": "Notifications (ana)",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/api/notifications?user=ana"
+      }
+    },
+    {
+      "name": "Ack notification id=1",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:4000/api/notifications/1/ack"
+      }
+    }
+  ]
+}
